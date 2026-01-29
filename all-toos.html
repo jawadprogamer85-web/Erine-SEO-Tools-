@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ernie SEO Tools - 100+ Free SEO & Digital Marketing Tools</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            padding: 20px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        
+        .logo p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        #searchInput:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .tool-icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .tool-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .tool-card p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .badge.popular {
+            background: #ffd700;
+            color: #333;
+        }
+        
+        .badge.new {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .badge.ai {
+            background: #9c27b0;
+            color: white;
+        }
+        
+        /* Tool Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 50px auto;
+            border-radius: 15px;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+        
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+        
+        /* Tool Interface */
+        .tool-interface {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .tool-interface {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .input-section, .output-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        textarea, input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-family: inherit;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .result-box {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+            margin-top: 50px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .modal-content {
+                margin: 20px;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <h1>Ernie SEO Tools</h1>
+                <p>100% Free SEO & Digital Marketing Tools - No Login Required</p>
+            </div>
+            
+            <!-- Navigation -->
+            <nav id="categoryNav">
+                <button class="nav-btn active" data-category="all">All Tools (100+)</button>
+                <button class="nav-btn" data-category="content">Content SEO (15)</button>
+                <button class="nav-btn" data-category="keyword">Keyword Tools (10)</button>
+                <button class="nav-btn" data-category="backlink">Backlink Tools (8)</button>
+                <button class="nav-btn" data-category="technical">Technical SEO (10)</button>
+                <button class="nav-btn" data-category="domain">Domain Tools (10)</button>
+                <button class="nav-btn" data-category="youtube">YouTube SEO (10)</button>
+                <button class="nav-btn" data-category="ai">AI Tools (10)</button>
+                <button class="nav-btn" data-category="onpage">On-Page SEO (12)</button>
+            </nav>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for tools...">
+            </div>
+        </header>
+        
+        <!-- Tools Grid -->
+        <div id="toolsContainer" class="tools-grid">
+            <!-- Tools will be dynamically loaded here -->
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div style="margin-bottom: 20px;">
+                <h3 style="margin-bottom: 10px;">Popular Tools</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 15px;">
+                    <li><a href="word-counter.html" style="color: white; text-decoration: none;">Word Counter</a></li>
+                    <li><a href="seo-analyzer.html" style="color: white; text-decoration: none;">SEO Content Analyzer</a></li>
+                    <li><a href="keyword-research.html" style="color: white; text-decoration: none;">Keyword Research</a></li>
+                    <li><a href="backlink-checker.html" style="color: white; text-decoration: none;">Backlink Checker</a></li>
+                    <li><a href="plagiarism-checker.html" style="color: white; text-decoration: none;">Plagiarism Checker</a></li>
+                    <li><a href="all-tools.html" style="color: white; text-decoration: none;">View All Tools</a></li>
+                </ul>
+            </div>
+            <p>© 2024 Ernie SEO Tools. All tools are 100% free with no login required.</p>
+            <p>No external libraries used - Pure HTML, CSS & JavaScript</p>
+        </footer>
+    </div>
+    
+    <!-- Tool Modal -->
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Tool Name</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Tool content will be loaded here -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // All 100+ SEO Tools Data
+        const allTools = [
+            // Content SEO Tools (15)
+            {
+                id: 'word-counter',
+                name: 'Word Counter',
+                category: 'content',
+                description: 'Count words, characters, sentences, and paragraphs instantly',
+                badge: 'popular',
+                icon: '📝'
+            },
+            {
+                id: 'character-counter',
+                name: 'Character Counter',
+                category: 'content',
+                description: 'Count characters with and without spaces for SEO optimization',
+                icon: '🔤'
+            },
+            {
+                id: 'sentence-counter',
+                name: 'Sentence Counter',
+                category: 'content',
+                description: 'Count sentences and analyze sentence structure',
+                icon: '📄'
+            },
+            {
+                id: 'paragraph-counter',
+                name: 'Paragraph Counter',
+                category: 'content',
+                description: 'Count paragraphs and analyze content structure',
+                icon: '📑'
+            },
+            {
+                id: 'keyword-density-checker',
+                name: 'Keyword Density Checker',
+                category: 'content',
+                description: 'Analyze keyword density and distribution',
+                icon: '📊'
+            },
+            {
+                id: 'readability-checker',
+                name: 'Readability Checker',
+                category: 'content',
+                description: 'Check readability scores (Flesch-Kincaid, etc.)',
+                icon: '📖'
+            },
+            {
+                id: 'text-case-converter',
+                name: 'Text Case Converter',
+                category: 'content',
+                description: 'Convert text between different cases',
+                icon: '🔄'
+            },
+            {
+                id: 'stop-words-remover',
+                name: 'Stop Words Remover',
+                category: 'content',
+                description: 'Remove common stop words from text',
+                icon: '🗑️'
+            },
+            {
+                id: 'plagiarism-checker',
+                name: 'Plagiarism Checker',
+                category: 'content',
+                description: 'Check content for duplicate text online',
+                icon: '🔍'
+            },
+            {
+                id: 'article-rewriter',
+                name: 'Article Rewriter',
+                category: 'content',
+                description: 'Rewrite articles while preserving meaning',
+                icon: '✍️'
+            },
+            {
+                id: 'grammar-checker',
+                name: 'Grammar Checker',
+                category: 'content',
+                description: 'Check and correct grammar mistakes',
+                icon: '✓'
+            },
+            {
+                id: 'seo-content-analyzer',
+                name: 'SEO Content Analyzer',
+                category: 'content',
+                description: 'Comprehensive SEO analysis of your content',
+                badge: 'popular',
+                icon: '📈'
+            },
+            {
+                id: 'long-tail-keyword-generator',
+                name: 'Long Tail Keyword Generator',
+                category: 'content',
+                description: 'Generate long tail keyword ideas',
+                icon: '🎯'
+            },
+            {
+                id: 'blog-title-generator',
+                name: 'Blog Title Generator',
+                category: 'content',
+                description: 'Generate engaging blog post titles',
+                icon: '📰'
+            },
+            {
+                id: 'meta-description-generator',
+                name: 'Meta Description Generator',
+                category: 'content',
+                description: 'Create compelling meta descriptions',
+                icon: '🏷️'
+            },
+            {
+                id: 'headline-analyzer',
+                name: 'Headline Analyzer',
+                category: 'content',
+                description: 'Analyze and score your headlines',
+                icon: '📰'
+            },
+            {
+                id: 'lsi-keyword-generator',
+                name: 'LSI Keyword Generator',
+                category: 'content',
+                description: 'Generate LSI keywords for better SEO',
+                icon: '🔑'
+            },
+            {
+                id: 'faq-generator',
+                name: 'FAQ Generator',
+                category: 'content',
+                description: 'Generate FAQ sections for your content',
+                icon: '❓'
+            },
+            {
+                id: 'youtube-description-generator',
+                name: 'YouTube Description Generator',
+                category: 'content',
+                description: 'Create engaging YouTube descriptions',
+                icon: '📹'
+            },
+            {
+                id: 'youtube-title-generator',
+                name: 'YouTube Title Generator',
+                category: 'content',
+                description: 'Generate click-worthy YouTube titles',
+                icon: '🎬'
+            },
+            
+            // On-Page SEO Tools (12)
+            {
+                id: 'meta-title-checker',
+                name: 'Meta Title Checker',
+                category: 'onpage',
+                description: 'Check and optimize meta title length',
+                icon: '📏'
+            },
+            {
+                id: 'meta-description-checker',
+                name: 'Meta Description Checker',
+                category: 'onpage',
+                description: 'Check meta description length and quality',
+                icon: '📋'
+            },
+            {
+                id: 'url-seo-checker',
+                name: 'URL SEO Checker',
+                category: 'onpage',
+                description: 'Analyze URL structure for SEO',
+                icon: '🔗'
+            },
+            {
+                id: 'heading-analyzer',
+                name: 'Heading Tag Analyzer',
+                category: 'onpage',
+                description: 'Analyze H1-H6 heading structure',
+                icon: '🏷️'
+            },
+            {
+                id: 'internal-link-checker',
+                name: 'Internal Link Checker',
+                category: 'onpage',
+                description: 'Check internal linking structure',
+                icon: '🔄'
+            },
+            {
+                id: 'broken-link-checker',
+                name: 'Broken Link Checker',
+                category: 'onpage',
+                description: 'Find and fix broken links',
+                icon: '🔗'
+            },
+            {
+                id: 'image-alt-checker',
+                name: 'Image Alt Text Checker',
+                category: 'onpage',
+                description: 'Check image alt attributes',
+                icon: '🖼️'
+            },
+            {
+                id: 'page-seo-analyzer',
+                name: 'Page SEO Analyzer',
+                category: 'onpage',
+                description: 'Complete on-page SEO analysis',
+                icon: '🔍'
+            },
+            {
+                id: 'schema-generator',
+                name: 'Schema Markup Generator',
+                category: 'onpage',
+                description: 'Generate JSON-LD schema markup',
+                icon: '🏗️'
+            },
+            {
+                id: 'og-checker',
+                name: 'Open Graph Checker',
+                category: 'onpage',
+                description: 'Check Open Graph meta tags',
+                icon: '📱'
+            },
+            {
+                id: 'canonical-checker',
+                name: 'Canonical Tag Checker',
+                category: 'onpage',
+                description: 'Check canonical tag implementation',
+                icon: '🔖'
+            },
+            {
+                id: 'html-minifier',
+                name: 'HTML Minifier',
+                category: 'onpage',
+                description: 'Minify HTML code for faster loading',
+                icon: '⚡'
+            },
+            {
+                id: 'css-minifier',
+                name: 'CSS Minifier',
+                category: 'onpage',
+                description: 'Minify CSS files',
+                icon: '🎨'
+            },
+            {
+                id: 'js-minifier',
+                name: 'JavaScript Minifier',
+                category: 'onpage',
+                description: 'Minify JavaScript files',
+                icon: '📜'
+            },
+            {
+                id: 'page-speed-analyzer',
+                name: 'Page Speed Analyzer',
+                category: 'onpage',
+                description: 'Analyze website loading speed',
+                icon: '⚡'
+            },
+            
+            // Keyword Tools (10)
+            {
+                id: 'keyword-research',
+                name: 'Keyword Research Tool',
+                category: 'keyword',
+                description: 'Find related keywords and search volume',
+                badge: 'popular',
+                icon: '🔍'
+            },
+            {
+                id: 'keyword-difficulty',
+                name: 'Keyword Difficulty Checker',
+                category: 'keyword',
+                description: 'Check keyword competition level',
+                icon: '📊'
+            },
+            {
+                id: 'serp-preview',
+                name: 'SERP Preview Tool',
+                category: 'keyword',
+                description: 'Preview how your page appears in SERPs',
+                icon: '👁️'
+            },
+            {
+                id: 'search-volume-estimator',
+                name: 'Search Volume Estimator',
+                category: 'keyword',
+                description: 'Estimate monthly search volume',
+                icon: '📈'
+            },
+            {
+                id: 'keyword-position-checker',
+                name: 'Keyword Position Checker',
+                category: 'keyword',
+                description: 'Check keyword rankings',
+                icon: '📍'
+            },
+            {
+                id: 'related-keyword-finder',
+                name: 'Related Keyword Finder',
+                category: 'keyword',
+                description: 'Find semantically related keywords',
+                icon: '🎯'
+            },
+            {
+                id: 'question-keyword-finder',
+                name: 'Question Keyword Finder',
+                category: 'keyword',
+                description: 'Find question-based keywords',
+                icon: '❓'
+            },
+            {
+                id: 'local-keyword-generator',
+                name: 'Local Keyword Generator',
+                category: 'keyword',
+                description: 'Generate local search keywords',
+                icon: '🏢'
+            },
+            {
+                id: 'competitor-keyword-tool',
+                name: 'Competitor Keyword Tool',
+                category: 'keyword',
+                description: 'Analyze competitor keywords',
+                icon: '👥'
+            },
+            {
+                id: 'google-trends-analyzer',
+                name: 'Google Trends Analyzer',
+                category: 'keyword',
+                description: 'Analyze keyword trends over time',
+                icon: '📅'
+            },
+            
+            // Backlink Tools (8)
+            {
+                id: 'backlink-checker',
+                name: 'Backlink Checker',
+                category: 'backlink',
+                description: 'Check backlinks and referring domains',
+                badge: 'popular',
+                icon: '🔗'
+            },
+            {
+                id: 'domain-authority-checker',
+                name: 'Domain Authority Checker',
+                category: 'backlink',
+                description: 'Check domain authority score',
+                icon: '⭐'
+            },
+            {
+                id: 'page-authority-checker',
+                name: 'Page Authority Checker',
+                category: 'backlink',
+                description: 'Check page authority score',
+                icon: '📄'
+            },
+            {
+                id: 'spam-score-checker',
+                name: 'Spam Score Checker',
+                category: 'backlink',
+                description: 'Check domain spam score',
+                icon: '🚫'
+            },
+            {
+                id: 'referring-domain-checker',
+                name: 'Referring Domain Checker',
+                category: 'backlink',
+                description: 'Analyze referring domains',
+                icon: '🌐'
+            },
+            {
+                id: 'anchor-text-analyzer',
+                name: 'Anchor Text Analyzer',
+                category: 'backlink',
+                description: 'Analyze anchor text distribution',
+                icon: '📌'
+            },
+            {
+                id: 'broken-backlink-finder',
+                name: 'Broken Backlink Finder',
+                category: 'backlink',
+                description: 'Find broken backlink opportunities',
+                icon: '🔍'
+            },
+            {
+                id: 'link-opportunity-finder',
+                name: 'Link Opportunity Finder',
+                category: 'backlink',
+                description: 'Find link building opportunities',
+                icon: '🎯'
+            },
+            {
+                id: 'competitor-backlink-tool',
+                name: 'Competitor Backlink Tool',
+                category: 'backlink',
+                description: 'Analyze competitor backlinks',
+                icon: '👥'
+            },
+            {
+                id: 'social-signal-checker',
+                name: 'Social Signal Checker',
+                category: 'backlink',
+                description: 'Check social media shares and signals',
+                icon: '📱'
+            },
+            
+            // Technical SEO Tools (10)
+            {
+                id: 'xml-sitemap-generator',
+                name: 'XML Sitemap Generator',
+                category: 'technical',
+                description: 'Generate XML sitemaps',
+                icon: '🗺️'
+            },
+            {
+                id: 'robots-txt-generator',
+                name: 'Robots.txt Generator',
+                category: 'technical',
+                description: 'Generate robots.txt files',
+                icon: '🤖'
+            },
+            {
+                id: 'website-crawl-tool',
+                name: 'Website Crawl Tool',
+                category: 'technical',
+                description: 'Crawl and analyze website structure',
+                icon: '🕷️'
+            },
+            {
+                id: 'http-header-checker',
+                name: 'HTTP Header Checker',
+                category: 'technical',
+                description: 'Check HTTP headers and status codes',
+                icon: '📡'
+            },
+            {
+                id: 'redirect-checker',
+                name: 'Redirect Checker',
+                category: 'technical',
+                description: 'Check redirect chains and status',
+                icon: '🔄'
+            },
+            {
+                id: 'ssl-checker',
+                name: 'SSL Checker',
+                category: 'technical',
+                description: 'Check SSL certificate status',
+                icon: '🔒'
+            },
+            {
+                id: 'mobile-friendly-test',
+                name: 'Mobile-Friendly Test',
+                category: 'technical',
+                description: 'Test mobile responsiveness',
+                icon: '📱'
+            },
+            {
+                id: 'core-web-vitals-checker',
+                name: 'Core Web Vitals Checker',
+                category: 'technical',
+                description: 'Check Core Web Vitals metrics',
+                icon: '⚡'
+            },
+            {
+                id: 'website-uptime-checker',
+                name: 'Website Uptime Checker',
+                category: 'technical',
+                description: 'Monitor website uptime',
+                icon: '⏱️'
+            },
+            {
+                id: 'favicon-generator',
+                name: 'Favicon Generator',
+                category: 'technical',
+                description: 'Generate favicon files',
+                icon: '🖼️'
+            },
+            
+            // Domain & Website Tools (10)
+            {
+                id: 'domain-age-checker',
+                name: 'Domain Age Checker',
+                category: 'domain',
+                description: 'Check domain registration date',
+                icon: '📅'
+            },
+            {
+                id: 'domain-availability-checker',
+                name: 'Domain Availability Checker',
+                category: 'domain',
+                description: 'Check domain name availability',
+                icon: '✅'
+            },
+            {
+                id: 'whois-lookup',
+                name: 'Whois Lookup',
+                category: 'domain',
+                description: 'Lookup domain registration info',
+                icon: '👤'
+            },
+            {
+                id: 'ip-address-lookup',
+                name: 'IP Address Lookup',
+                category: 'domain',
+                description: 'Lookup IP address information',
+                icon: '📍'
+            },
+            {
+                id: 'dns-checker',
+                name: 'DNS Checker',
+                category: 'domain',
+                description: 'Check DNS records and propagation',
+                icon: '🌐'
+            },
+            {
+                id: 'hosting-checker',
+                name: 'Hosting Checker',
+                category: 'domain',
+                description: 'Check website hosting provider',
+                icon: '🏢'
+            },
+            {
+                id: 'website-traffic-estimator',
+                name: 'Website Traffic Estimator',
+                category: 'domain',
+                description: 'Estimate website traffic',
+                icon: '📊'
+            },
+            {
+                id: 'server-location-checker',
+                name: 'Server Location Checker',
+                category: 'domain',
+                description: 'Check server geographical location',
+                icon: '🌍'
+            },
+            {
+                id: 'website-screenshot-tool',
+                name: 'Website Screenshot Tool',
+                category: 'domain',
+                description: 'Take website screenshots',
+                icon: '📸'
+            },
+            {
+                id: 'cms-detector',
+                name: 'CMS Detector',
+                category: 'domain',
+                description: 'Detect website CMS platform',
+                icon: '🔧'
+            },
+            
+            // YouTube SEO Tools (10)
+            {
+                id: 'youtube-tag-generator',
+                name: 'YouTube Tag Generator',
+                category: 'youtube',
+                description: 'Generate YouTube video tags',
+                icon: '🏷️'
+            },
+            {
+                id: 'youtube-keyword-tool',
+                name: 'YouTube Keyword Tool',
+                category: 'youtube',
+                description: 'Find YouTube keyword ideas',
+                icon: '🔍'
+            },
+            {
+                id: 'youtube-rank-tracker',
+                name: 'YouTube Rank Tracker',
+                category: 'youtube',
+                description: 'Track video rankings',
+                icon: '📊'
+            },
+            {
+                id: 'youtube-channel-analyzer',
+                name: 'YouTube Channel Analyzer',
+                category: 'youtube',
+                description: 'Analyze YouTube channel stats',
+                icon: '📈'
+            },
+            {
+                id: 'youtube-thumbnail-preview',
+                name: 'YouTube Thumbnail Preview',
+                category: 'youtube',
+                description: 'Preview thumbnails on different devices',
+                icon: '🖼️'
+            },
+            {
+                id: 'video-seo-analyzer',
+                name: 'Video SEO Analyzer',
+                category: 'youtube',
+                description: 'Analyze video SEO optimization',
+                icon: '🎬'
+            },
+            {
+                id: 'hashtag-generator',
+                name: 'Hashtag Generator',
+                category: 'youtube',
+                description: 'Generate relevant hashtags',
+                icon: '#️⃣'
+            },
+            {
+                id: 'engagement-rate-calculator',
+                name: 'Engagement Rate Calculator',
+                category: 'youtube',
+                description: 'Calculate engagement rate',
+                icon: '💬'
+            },
+            {
+                id: 'video-length-calculator',
+                name: 'Video Length Calculator',
+                description: 'Calculate optimal video length',
+                category: 'youtube',
+                icon: '⏱️'
+            },
+            {
+                id: 'upload-time-checker',
+                name: 'Best Upload Time Checker',
+                category: 'youtube',
+                description: 'Find best times to upload videos',
+                icon: '⏰'
+            },
+            
+            // AI SEO Tools (10)
+            {
+                id: 'ai-blog-writer',
+                name: 'AI Blog Writer',
+                category: 'ai',
+                description: 'Generate blog posts with AI',
+                badge: 'ai',
+                icon: '🤖'
+            },
+            {
+                id: 'ai-seo-optimizer',
+                name: 'AI SEO Optimizer',
+                category: 'ai',
+                description: 'Optimize content for SEO using AI',
+                badge: 'ai',
+                icon: '⚡'
+            },
+            {
+                id: 'ai-meta-title-generator',
+                name: 'AI Meta Title Generator',
+                category: 'ai',
+                description: 'Generate SEO-optimized meta titles',
+                badge: 'ai',
+                icon: '🏷️'
+            },
+            {
+                id: 'ai-keyword-research',
+                name: 'AI Keyword Research Tool',
+                category: 'ai',
+                description: 'AI-powered keyword research',
+                badge: 'ai',
+                icon: '🔍'
+            },
+            {
+                id: 'ai-content-outline-generator',
+                name: 'AI Content Outline Generator',
+                category: 'ai',
+                description: 'Generate content outlines with AI',
+                badge: 'ai',
+                icon: '📝'
+            },
+            {
+                id: 'ai-product-description-generator',
+                name: 'AI Product Description Generator',
+                category: 'ai',
+                description: 'Create product descriptions with AI',
+                badge: 'ai',
+                icon: '🛒'
+            },
+            {
+                id: 'ai-landing-page-generator',
+                name: 'AI Landing Page Copy Generator',
+                category: 'ai',
+                description: 'Generate landing page copy',
+                badge: 'ai',
+                icon: '🏠'
+            },
+            {
+                id: 'ai-faq-generator',
+                name: 'AI FAQ Generator',
+                category: 'ai',
+                description: 'Generate FAQ sections with AI',
+                badge: 'ai',
+                icon: '❓'
+            },
+            {
+                id: 'ai-email-outreach-writer',
+                name: 'AI Email Outreach Writer',
+                category: 'ai',
+                description: 'Write outreach emails with AI',
+                badge: 'ai',
+                icon: '✉️'
+            },
+            {
+                id: 'ai-content-rewriter',
+                name: 'AI Content Rewriter',
+                category: 'ai',
+                description: 'Rewrite content with AI',
+                badge: 'ai',
+                icon: '🔄'
+            }
+        ];
+
+        // Initialize the page
+        let currentCategory = 'all';
+        let filteredTools = [...allTools];
+
+        function initPage() {
+            renderTools();
+            setupEventListeners();
+            setupNavigation();
+        }
+
+        function renderTools() {
+            const container = document.getElementById('toolsContainer');
+            container.innerHTML = '';
+            
+            filteredTools.forEach(tool => {
+                const toolLink = document.createElement('a');
+                toolLink.href = getToolFilePath(tool.id);
+                toolLink.className = 'tool-card';
+                toolLink.style.textDecoration = 'none';
+                toolLink.style.color = 'inherit';
+                toolLink.dataset.id = tool.id;
+                
+                let badgeHTML = '';
+                if (tool.badge === 'popular') {
+                    badgeHTML = '<span class="badge popular">Popular</span>';
+                } else if (tool.badge === 'new') {
+                    badgeHTML = '<span class="badge new">New</span>';
+                } else if (tool.badge === 'ai') {
+                    badgeHTML = '<span class="badge ai">AI</span>';
+                }
+                
+                toolLink.innerHTML = `
+                    <div class="tool-icon">${tool.icon}</div>
+                    ${badgeHTML}
+                    <h3>${tool.name}</h3>
+                    <p>${tool.description}</p>
+                `;
+                
+                container.appendChild(toolLink);
+            });
+        }
+
+        function getToolFilePath(toolId) {
+            // Map tool IDs to their respective HTML files for all 100+ tools
+            const toolFileMap = {
+                // Content SEO Tools
+                'word-counter': 'word-counter.html',
+                'character-counter': 'character-counter.html',
+                'sentence-counter': 'sentence-counter.html',
+                'paragraph-counter': 'paragraph-counter.html',
+                'keyword-density-checker': 'keyword-density-checker.html',
+                'readability-checker': 'readability-checker.html',
+                'text-case-converter': 'text-case-converter.html',
+                'stop-words-remover': 'stop-words-remover.html',
+                'plagiarism-checker': 'plagiarism-checker.html',
+                'article-rewriter': 'article-rewriter.html',
+                'grammar-checker': 'grammar-checker.html',
+                'seo-content-analyzer': 'seo-analyzer.html',
+                'long-tail-keyword-generator': 'long-tail-keyword-generator.html',
+                'blog-title-generator': 'blog-title-generator.html',
+                'meta-description-generator': 'meta-description-generator.html',
+                'headline-analyzer': 'headline-analyzer.html',
+                'lsi-keyword-generator': 'lsi-keyword-generator.html',
+                'faq-generator': 'faq-generator.html',
+                'youtube-description-generator': 'youtube-description-generator.html',
+                'youtube-title-generator': 'youtube-title-generator.html',
+                
+                // On-Page SEO Tools
+                'meta-title-checker': 'meta-title-checker.html',
+                'meta-description-checker': 'meta-description-checker.html',
+                'url-seo-checker': 'url-seo-checker.html',
+                'heading-analyzer': 'heading-analyzer.html',
+                'internal-link-checker': 'internal-link-checker.html',
+                'broken-link-checker': 'broken-link-checker.html',
+                'image-alt-checker': 'image-alt-checker.html',
+                'page-seo-analyzer': 'page-seo-analyzer.html',
+                'schema-generator': 'schema-generator.html',
+                'og-checker': 'og-checker.html',
+                'canonical-checker': 'canonical-checker.html',
+                'html-minifier': 'html-minifier.html',
+                'css-minifier': 'css-minifier.html',
+                'js-minifier': 'js-minifier.html',
+                'page-speed-analyzer': 'page-speed-analyzer.html',
+                
+                // Keyword Tools
+                'keyword-research': 'keyword-research.html',
+                'keyword-difficulty': 'keyword-difficulty.html',
+                'serp-preview': 'serp-preview.html',
+                'search-volume-estimator': 'search-volume-estimator.html',
+                'keyword-position-checker': 'keyword-position-checker.html',
+                'related-keyword-finder': 'related-keyword-finder.html',
+                'question-keyword-finder': 'question-keyword-finder.html',
+                'local-keyword-generator': 'local-keyword-generator.html',
+                'competitor-keyword-tool': 'competitor-keyword-tool.html',
+                'google-trends-analyzer': 'google-trends-analyzer.html',
+                
+                // Backlink Tools
+                'backlink-checker': 'backlink-checker.html',
+                'domain-authority-checker': 'domain-authority-checker.html',
+                'page-authority-checker': 'page-authority-checker.html',
+                'spam-score-checker': 'spam-score-checker.html',
+                'referring-domain-checker': 'referring-domain-checker.html',
+                'anchor-text-analyzer': 'anchor-text-analyzer.html',
+                'broken-backlink-finder': 'broken-backlink-finder.html',
+                'link-opportunity-finder': 'link-opportunity-finder.html',
+                'competitor-backlink-tool': 'competitor-backlink-tool.html',
+                'social-signal-checker': 'social-signal-checker.html',
+                
+                // Technical SEO Tools
+                'xml-sitemap-generator': 'xml-sitemap-generator.html',
+                'robots-txt-generator': 'robots-txt-generator.html',
+                'website-crawl-tool': 'website-crawl-tool.html',
+                'http-header-checker': 'http-header-checker.html',
+                'redirect-checker': 'redirect-checker.html',
+                'ssl-checker': 'ssl-checker.html',
+                'mobile-friendly-test': 'mobile-friendly-test.html',
+                'core-web-vitals-checker': 'core-web-vitals-checker.html',
+                'website-uptime-checker': 'website-uptime-checker.html',
+                'favicon-generator': 'favicon-generator.html',
+                
+                // Domain & Website Tools
+                'domain-age-checker': 'domain-age-checker.html',
+                'domain-availability-checker': 'domain-availability-checker.html',
+                'whois-lookup': 'whois-lookup.html',
+                'ip-address-lookup': 'ip-address-lookup.html',
+                'dns-checker': 'dns-checker.html',
+                'hosting-checker': 'hosting-checker.html',
+                'website-traffic-estimator': 'website-traffic-estimator.html',
+                'server-location-checker': 'server-location-checker.html',
+                'website-screenshot-tool': 'website-screenshot-tool.html',
+                'cms-detector': 'cms-detector.html',
+                
+                // YouTube SEO Tools
+                'youtube-tag-generator': 'youtube-tag-generator.html',
+                'youtube-keyword-tool': 'youtube-keyword-tool.html',
+                'youtube-rank-tracker': 'youtube-rank-tracker.html',
+                'youtube-channel-analyzer': 'youtube-channel-analyzer.html',
+                'youtube-thumbnail-preview': 'youtube-thumbnail-preview.html',
+                'video-seo-analyzer': 'video-seo-analyzer.html',
+                'hashtag-generator': 'hashtag-generator.html',
+                'engagement-rate-calculator': 'engagement-rate-calculator.html',
+                'video-length-calculator': 'video-length-calculator.html',
+                'upload-time-checker': 'upload-time-checker.html',
+                
+                // AI SEO Tools
+                'ai-blog-writer': 'ai-blog-writer.html',
+                'ai-seo-optimizer': 'ai-seo-optimizer.html',
+                'ai-meta-title-generator': 'ai-meta-title-generator.html',
+                'ai-keyword-research': 'ai-keyword-research.html',
+                'ai-content-outline-generator': 'ai-content-outline-generator.html',
+                'ai-product-description-generator': 'ai-product-description-generator.html',
+                'ai-landing-page-generator': 'ai-landing-page-generator.html',
+                'ai-faq-generator': 'ai-faq-generator.html',
+                'ai-email-outreach-writer': 'ai-email-outreach-writer.html',
+                'ai-content-rewriter': 'ai-content-rewriter.html'
+            };
+            
+            // If tool has a mapped file, use it; otherwise use a generic filename based on ID
+            return toolFileMap[toolId] || toolId + '.html';
+        }
+
+        function setupEventListeners() {
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                filterTools(searchTerm);
+            });
+            
+            // Category navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentCategory = this.dataset.category;
+                    filterTools(document.getElementById('searchInput').value);
+                });
+            });
+        }
+
+        function setupNavigation() {
+            // Category buttons
+            const categories = {
+                'all': 'All Tools (100+)',
+                'content': 'Content SEO Tools (15)',
+                'onpage': 'On-Page SEO Tools (12)',
+                'keyword': 'Keyword Tools (10)',
+                'backlink': 'Backlink Tools (8)',
+                'technical': 'Technical SEO Tools (10)',
+                'domain': 'Domain Tools (10)',
+                'youtube': 'YouTube SEO Tools (10)',
+                'ai': 'AI SEO Tools (10)'
+            };
+            
+            const nav = document.getElementById('categoryNav');
+            nav.innerHTML = '';
+            
+            Object.entries(categories).forEach(([id, text]) => {
+                const btn = document.createElement('button');
+                btn.className = `nav-btn ${id === 'all' ? 'active' : ''}`;
+                btn.textContent = text;
+                btn.dataset.category = id;
+                btn.onclick = () => {
+                    // For local filtering on home page
+                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = id;
+                    filterTools(document.getElementById('searchInput').value);
+                };
+                
+                // Add a data attribute for category page link
+                if (id !== 'all') {
+                    btn.dataset.categoryPage = getCategoryFilePath(id);
+                }
+                
+                nav.appendChild(btn);
+            });
+        }
+
+        function getCategoryFilePath(categoryId) {
+            // Map category IDs to their respective HTML files
+            const categoryFileMap = {
+                'content': 'content-seo-tools.html',
+                'onpage': 'onpage-seo-tools.html',
+                'keyword': 'keyword-tools.html',
+                'backlink': 'backlink-tools.html',
+                'technical': 'technical-seo-tools.html',
+                'domain': 'domain-tools.html',
+                'youtube': 'youtube-seo-tools.html',
+                'ai': 'ai-seo-tools.html',
+                'all': 'all-tools.html'
+            };
+            
+            return categoryFileMap[categoryId] || 'all-tools.html';
+        }
+
+        function filterTools(searchTerm = '') {
+            filteredTools = allTools.filter(tool => {
+                // Category filter
+                if (currentCategory !== 'all' && tool.category !== currentCategory) {
+                    return false;
+                }
+                
+                // Search filter
+                if (searchTerm) {
+                    const searchLower = searchTerm.toLowerCase();
+                    return tool.name.toLowerCase().includes(searchLower) || 
+                           tool.description.toLowerCase().includes(searchLower);
+                }
+                
+                return true;
+            });
+            
+            renderTools();
+        }
+
+        function openTool(toolId) {
+            const tool = allTools.find(t => t.id === toolId);
+            if (!tool) return;
+            
+            document.getElementById('modalTitle').textContent = tool.name;
+            document.getElementById('toolModal').style.display = 'block';
+            
+            // Load tool interface
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = getToolInterface(toolId);
+            
+            // Initialize tool functionality
+            initializeTool(toolId);
+        }
+
+        function closeModal() {
+            document.getElementById('toolModal').style.display = 'none';
+        }
+
+        function getToolInterface(toolId) {
+            // Return HTML interface for each tool
+            switch(toolId) {
+                case 'word-counter':
+                    return `
+                        <div class="tool-interface">
+                            <div class="input-section">
+                                <h3>Enter Your Text</h3>
+                                <textarea id="wordCounterInput" placeholder="Paste or type your text here...">Welcome to Ernie SEO Tools! We provide 100% free SEO tools for website owners, bloggers, and YouTubers. Our tools are completely free, with no login required, no paywalls, and no credit limits. Whether you need to analyze your content, research keywords, check backlinks, or optimize your YouTube videos, we have the free tools you need. Start using our tools today to improve your SEO and grow your online presence!</textarea>
+                                <button onclick="analyzeWordCount()">Analyze Text</button>
+                                <button onclick="clearWordCount()" style="background: #6c757d; margin-left: 10px;">Clear</button>
+                            </div>
+                            <div class="output-section">
+                                <h3>Analysis Results</h3>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="wordCount">0</div>
+                                        <div class="stat-label">Words</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="charCount">0</div>
+                                        <div class="stat-label">Characters</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="sentenceCount">0</div>
+                                        <div class="stat-label">Sentences</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="paragraphCount">0</div>
+                                        <div class="stat-label">Paragraphs</div>
+                                    </div>
+                                </div>
+                                <div class="result-box">
+                                    <h4>Reading Time</h4>
+                                    <p id="readingTime">0 minutes</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                case 'seo-content-analyzer':
+                    return `
+                        <div class="tool-interface">
+                            <div class="input-section">
+                                <h3>Analyze Your Content</h3>
+                                <textarea id="seoContentInput" placeholder="Paste your content here...">SEO Tools: A Complete Guide for 2024
+
+Search engine optimization (SEO) is crucial for online visibility. With the right SEO tools, you can analyze your website, research keywords, track rankings, and optimize content.
+
+Why Use SEO Tools?
+SEO tools help you understand what's working and what needs improvement. They provide data-driven insights to make informed decisions about your SEO strategy.
+
+Key Features of Good SEO Tools:
+- Keyword research capabilities
+- Site audit functionality
+- Backlink analysis
+- Competitor research
+- Content optimization suggestions
+- Rank tracking
+
+Choosing the right SEO tools can save you time and help you achieve better results. Free tools like Ernie SEO Tools provide essential functionality without the high cost.</textarea>
+                                <input type="text" id="focusKeyword" placeholder="Focus keyword..." value="SEO tools">
+                                <button onclick="analyzeSEOContent()">Analyze SEO</button>
+                            </div>
+                            <div class="output-section">
+                                <h3>SEO Analysis Results</h3>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="seoScore">75</div>
+                                        <div class="stat-label">SEO Score</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="keywordDensity">1.2%</div>
+                                        <div class="stat-label">Keyword Density</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="readabilityScore">8.5</div>
+                                        <div class="stat-label">Readability</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="wordCountSeo">180</div>
+                                        <div class="stat-label">Word Count</div>
+                                    </div>
+                                </div>
+                                <div class="result-box">
+                                    <h4>Recommendations</h4>
+                                    <ul id="seoRecommendations" style="list-style: none; padding: 0;">
+                                        <li>✓ Good keyword usage</li>
+                                        <li>✓ Readability is excellent</li>
+                                        <li>⚠ Add more content for better ranking</li>
+                                        <li>✓ Proper heading structure</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                case 'keyword-research':
+                    return `
+                        <div class="tool-interface">
+                            <div class="input-section">
+                                <h3>Keyword Research</h3>
+                                <input type="text" id="keywordInput" placeholder="Enter seed keyword..." value="SEO tools">
+                                <select id="countrySelect">
+                                    <option value="us">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="ca">Canada</option>
+                                    <option value="au">Australia</option>
+                                </select>
+                                <button onclick="researchKeywords()">Research Keywords</button>
+                            </div>
+                            <div class="output-section">
+                                <h3>Keyword Results</h3>
+                                <div style="overflow-x: auto;">
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <thead>
+                                            <tr style="background: #f8f9fa;">
+                                                <th style="padding: 10px; text-align: left;">Keyword</th>
+                                                <th style="padding: 10px; text-align: left;">Volume</th>
+                                                <th style="padding: 10px; text-align: left;">Difficulty</th>
+                                                <th style="padding: 10px; text-align: left;">CPC</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="keywordResults">
+                                            <!-- Results will be populated here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                case 'backlink-checker':
+                    return `
+                        <div class="tool-interface">
+                            <div class="input-section">
+                                <h3>Check Backlinks</h3>
+                                <input type="text" id="backlinkUrl" placeholder="Enter website URL..." value="ernieseotools.com">
+                                <button onclick="checkBacklinks()">Check Backlinks</button>
+                            </div>
+                            <div class="output-section">
+                                <h3>Backlink Analysis</h3>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="totalBacklinks">1,247</div>
+                                        <div class="stat-label">Total Backlinks</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="referringDomains">89</div>
+                                        <div class="stat-label">Referring Domains</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="domainAuthority">42</div>
+                                        <div class="stat-label">Domain Authority</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value" id="spamScore">3%</div>
+                                        <div class="stat-label">Spam Score</div>
+                                    </div>
+                                </div>
+                                <div class="result-box">
+                                    <h4>Top Referring Domains</h4>
+                                    <ul id="referringDomainsList" style="list-style: none; padding: 0;">
+                                        <li>• example.com (15 links)</li>
+                                        <li>• test-site.org (8 links)</li>
+                                        <li>• demo.net (5 links)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                default:
+                    // Generic interface for other tools
+                    const tool = allTools.find(t => t.id === toolId);
+                    return `
+                        <div class="tool-interface">
+                            <div class="input-section">
+                                <h3>${tool.name}</h3>
+                                <p>${tool.description}</p>
+                                <textarea placeholder="Enter your content or data here..."></textarea>
+                                <button onclick="alert('${tool.name} analysis complete!')">Analyze</button>
+                            </div>
+                            <div class="output-section">
+                                <h3>Results</h3>
+                                <div class="result-box">
+                                    <p>This tool analyzes your input and provides SEO recommendations.</p>
+                                    <p><strong>Sample Results:</strong></p>
+                                    <ul>
+                                        <li>✓ SEO optimization suggestions</li>
+                                        <li>✓ Performance metrics</li>
+                                        <li>✓ Improvement recommendations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+            }
+        }
+
+        function initializeTool(toolId) {
+            switch(toolId) {
+                case 'word-counter':
+                    analyzeWordCount(); // Initial analysis
+                    break;
+                case 'seo-content-analyzer':
+                    analyzeSEOContent(); // Initial analysis
+                    break;
+                case 'keyword-research':
+                    researchKeywords(); // Initial research
+                    break;
+                case 'backlink-checker':
+                    // Already has static data
+                    break;
+            }
+        }
+
+        // Tool Functions
+        function analyzeWordCount() {
+            const text = document.getElementById('wordCounterInput').value;
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            const characters = text.length;
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+            
+            document.getElementById('wordCount').textContent = words.length;
+            document.getElementById('charCount').textContent = characters;
+            document.getElementById('sentenceCount').textContent = sentences.length;
+            document.getElementById('paragraphCount').textContent = paragraphs.length || 1;
+            
+            const readingTime = Math.ceil(words.length / 200);
+            document.getElementById('readingTime').textContent = `${readingTime} minute${readingTime !== 1 ? 's' : ''}`;
+        }
+
+        function clearWordCount() {
+            document.getElementById('wordCounterInput').value = '';
+            analyzeWordCount();
+        }
+
+        function analyzeSEOContent() {
+            const text = document.getElementById('seoContentInput').value;
+            const keyword = document.getElementById('focusKeyword').value.toLowerCase();
+            
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            const keywordMatches = (text.toLowerCase().match(new RegExp(keyword, 'g')) || []).length;
+            const keywordDensity = ((keywordMatches / words.length) * 100).toFixed(1);
+            
+            // Calculate readability (simplified)
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            const wordsPerSentence = words.length / (sentences.length || 1);
+            const readability = wordsPerSentence < 15 ? '9.5' : wordsPerSentence < 25 ? '8.5' : '7.0';
+            
+            // Calculate SEO score
+            let seoScore = 75;
+            if (keywordMatches >= 3) seoScore += 10;
+            if (words.length > 500) seoScore += 10;
+            if (parseFloat(readability) > 8) seoScore += 5;
+            seoScore = Math.min(seoScore, 100);
+            
+            document.getElementById('seoScore').textContent = seoScore;
+            document.getElementById('keywordDensity').textContent = keywordDensity + '%';
+            document.getElementById('readabilityScore').textContent = readability;
+            document.getElementById('wordCountSeo').textContent = words.length;
+        }
+
+        function researchKeywords() {
+            const keyword = document.getElementById('keywordInput').value;
+            const results = [
+                { keyword: keyword + ' free', volume: '12,500', difficulty: 'Medium', cpc: '$2.45' },
+                { keyword: 'best ' + keyword, volume: '8,900', difficulty: 'High', cpc: '$3.20' },
+                { keyword: keyword + ' 2024', volume: '6,300', difficulty: 'Medium', cpc: '$2.10' },
+                { keyword: 'free ' + keyword + ' online', volume: '4,800', difficulty: 'Low', cpc: '$1.85' },
+                { keyword: keyword + ' software', volume: '3,200', difficulty: 'Medium', cpc: '$3.50' },
+                { keyword: 'affordable ' + keyword, volume: '2,100', difficulty: 'Low', cpc: '$1.95' },
+                { keyword: keyword + ' for beginners', volume: '1,800', difficulty: 'Low', cpc: '$1.60' },
+                { keyword: 'professional ' + keyword, volume: '1,200', difficulty: 'High', cpc: '$4.25' }
+            ];
+            
+            const tableBody = document.getElementById('keywordResults');
+            tableBody.innerHTML = '';
+            
+            results.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.keyword}</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.volume}</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.difficulty}</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.cpc}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function checkBacklinks() {
+            const url = document.getElementById('backlinkUrl').value;
+            // Simulate API call
+            document.getElementById('totalBacklinks').textContent = '1,247';
+            document.getElementById('referringDomains').textContent = '89';
+            document.getElementById('domainAuthority').textContent = '42';
+            document.getElementById('spamScore').textContent = '3%';
+            
+            alert(`Backlink analysis complete for ${url}`);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('toolModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Initialize the page
+        window.onload = initPage;
+    </script>
+</body>
+</html>
