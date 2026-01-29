@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="100% FREE SEO Tools for website owners, bloggers & YouTubers. No login required, no paywalls, no credit limits.">
+    <title>Ernie SEO Tools - 100% Free SEO & Digital Marketing Tools</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta property="og:title" content="Ernie SEO Tools - 100% Free SEO & Digital Marketing Tools">
+    <meta property="og:description" content="Completely free SEO tools for content, technical, on-page, YouTube, and AI-powered SEO. No login required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernieseotools.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN for demo, in production use build) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            300: '#f0abfc',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            800: '#86198f',
+                            900: '#701a75',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #0ea5e9;
+            --secondary-color: #d946ef;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #fdf4ff 100%);
+        }
+        
+        .tool-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .category-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .ad-container {
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.5s ease;
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .tool-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tool-result {
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .seo-score {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 24px;
+            background: conic-gradient(var(--primary-color) 0% 75%, #e5e7eb 75% 100%);
+        }
+        
+        .seo-score::before {
+            content: '';
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: white;
+            position: absolute;
+        }
+        
+        .seo-score span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-hidden {
+                display: none;
+            }
+        }
+    </style>
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Ernie SEO Tools",
+        "url": "https://ernieseotools.com",
+        "description": "100% free SEO tools for website owners, bloggers, and YouTubers. No login required, no paywalls, no credit limits.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "1250"
+        }
+    }
+    </script>
+</head>
+<body class="gradient-bg">
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">Ernie SEO Tools</h1>
+                        <p class="text-xs text-gray-500 -mt-1">100% Free Forever</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link font-medium text-gray-700 hover:text-primary-600">Home</a>
+                    <a href="all-tools.html" class="nav-link font-medium text-gray-700 hover:text-primary-600">All Tools</a>
+                    <a href="#categories" class="nav-link font-medium text-gray-700 hover:text-primary-600">Categories</a>
+                    <a href="#about" class="nav-link font-medium text-gray-700 hover:text-primary-600">Why Free?</a>
+                    <a href="#blog" class="nav-link font-medium text-gray-700 hover:text-primary-600">Blog</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button id="mobileMenuButton" class="md:hidden text-gray-700 hover:text-primary-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="md:hidden hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="font-medium text-gray-700 hover:text-primary-600 py-2">Home</a>
+                    <a href="all-tools.html" class="font-medium text-gray-700 hover:text-primary-600 py-2">All Tools</a>
+                    <a href="#categories" class="font-medium text-gray-700 hover:text-primary-600 py-2">Categories</a>
+                    <a href="#about" class="font-medium text-gray-700 hover:text-primary-600 py-2">Why Free?</a>
+                    <a href="#blog" class="font-medium text-gray-700 hover:text-primary-600 py-2">Blog</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="py-12 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                        Free All-in-One <span class="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">SEO Tools</span> for Website Owners, Bloggers & YouTubers
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+                        100% free SEO, digital marketing, YouTube SEO, and AI-powered tools. No login, no trial, no credit limits. Completely free forever.
+                    </p>
+                    
+                    <div class="flex flex-wrap justify-center gap-4 mb-12">
+                        <a href="all-tools.html" class="px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            Start Using Free Tools
+                        </a>
+                        <a href="#categories" class="px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl border-2 border-primary-100 shadow-md hover:shadow-lg transition-all duration-300">
+                            Browse Categories
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+                        <div class="bg-white p-6 rounded-2xl shadow-md">
+                            <div class="text-3xl font-bold text-primary-600">100+</div>
+                            <div class="text-gray-600">Free Tools</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md">
+                            <div class="text-3xl font-bold text-primary-600">0$</div>
+                            <div class="text-gray-600">Cost Forever</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md">
+                            <div class="text-3xl font-bold text-primary-600">100%</div>
+                            <div class="text-gray-600">No Login Required</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md">
+                            <div class="text-3xl font-bold text-primary-600">24/7</div>
+                            <div class="text-gray-600">Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Section (Top) -->
+        <section class="py-4">
+            <div class="container mx-auto px-4">
+                <div class="ad-container">
+                    Google AdSense Ad Space (728x90)
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Tools Section -->
+        <section id="tools" class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Most Popular Free SEO Tools</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Try our most-used tools that help thousands of marketers, bloggers, and YouTubers every day.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <!-- Word Counter Tool -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-primary-50 text-primary-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Word Counter</h3>
+                            <p class="text-gray-600 mb-4">Count words, characters, sentences, and paragraphs instantly.</p>
+                            <a href="word-counter.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Use Tool
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- SEO Analyzer Tool -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-secondary-50 text-secondary-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">SEO Content Analyzer</h3>
+                            <p class="text-gray-600 mb-4">Analyze your content for SEO optimization and readability.</p>
+                            <a href="seo-analyzer.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Use Tool
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Keyword Research Tool -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-green-50 text-green-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Keyword Research</h3>
+                            <p class="text-gray-600 mb-4">Find related keywords and search volume estimates.</p>
+                            <a href="keyword-research.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Use Tool
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Backlink Checker -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-purple-50 text-purple-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Backlink Checker</h3>
+                            <p class="text-gray-600 mb-4">Check backlinks and referring domains for any website.</p>
+                            <a href="backlink-checker.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Use Tool
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <a href="all-tools.html" class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-800">
+                        View All 100+ Free Tools
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool Demo Section -->
+        <section class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Try Our Free Tools Now</h2>
+                        <p class="text-gray-600">No signup required. Start using these tools immediately.</p>
+                    </div>
+                    
+                    <!-- Word Counter Tool Demo -->
+                    <div id="word-counter" class="bg-white rounded-2xl shadow-xl overflow-hidden mb-12">
+                        <div class="p-6 border-b border-gray-100">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900">Word Counter Tool</h3>
+                                    <p class="text-gray-600">Count words, characters, sentences, paragraphs, and reading time instantly.</p>
+                                </div>
+                                <a href="word-counter.html" class="px-4 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors text-sm">
+                                    Open Full Tool
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 md:p-8">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                <div>
+                                    <div class="mb-6">
+                                        <label for="textInput" class="block text-gray-700 font-medium mb-2">Enter your text:</label>
+                                        <textarea id="textInput" rows="10" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Paste or type your text here...">Welcome to Ernie SEO Tools! We provide 100% free SEO tools for website owners, bloggers, and YouTubers. Our tools are completely free, with no login required, no paywalls, and no credit limits. Whether you need to analyze your content, research keywords, check backlinks, or optimize your YouTube videos, we have the free tools you need. Start using our tools today to improve your SEO and grow your online presence!</textarea>
+                                    </div>
+                                    
+                                    <div class="flex flex-wrap gap-4">
+                                        <button id="countBtn" class="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors">
+                                            Count Text
+                                        </button>
+                                        <button id="clearBtn" class="px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-colors">
+                                            Clear Text
+                                        </button>
+                                        <button id="sampleBtn" class="px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-colors">
+                                            Load Sample
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="result-card p-6">
+                                        <h4 class="text-lg font-bold text-gray-900 mb-6">Text Analysis Results</h4>
+                                        
+                                        <div class="grid grid-cols-2 gap-6 mb-8">
+                                            <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+                                                <div class="text-3xl font-bold text-primary-600" id="wordCount">0</div>
+                                                <div class="text-gray-600">Words</div>
+                                            </div>
+                                            <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+                                                <div class="text-3xl font-bold text-primary-600" id="charCount">0</div>
+                                                <div class="text-gray-600">Characters</div>
+                                            </div>
+                                            <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+                                                <div class="text-3xl font-bold text-primary-600" id="sentenceCount">0</div>
+                                                <div class="text-gray-600">Sentences</div>
+                                            </div>
+                                            <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+                                                <div class="text-3xl font-bold text-primary-600" id="paragraphCount">0</div>
+                                                <div class="text-gray-600">Paragraphs</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <div class="flex justify-between mb-2">
+                                                <span class="font-medium text-gray-700">Reading Time</span>
+                                                <span class="font-semibold text-primary-600" id="readingTime">0 min</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div id="readingTimeBar" class="progress-fill" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <div class="flex justify-between mb-2">
+                                                <span class="font-medium text-gray-700">Speaking Time</span>
+                                                <span class="font-semibold text-primary-600" id="speakingTime">0 min</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div id="speakingTimeBar" class="progress-fill" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-6 p-4 bg-gray-50 rounded-xl">
+                                        <h5 class="font-bold text-gray-900 mb-2">💡 SEO Tip</h5>
+                                        <p class="text-gray-600 text-sm">For optimal SEO, aim for blog posts with at least 1,000 words. Longer content tends to rank better in search engines.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SEO Analyzer Tool Demo -->
+                    <div id="seo-analyzer" class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="p-6 border-b border-gray-100">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900">SEO Content Analyzer</h3>
+                                    <p class="text-gray-600">Analyze your content for SEO optimization, readability, and keyword density.</p>
+                                </div>
+                                <a href="seo-analyzer.html" class="px-4 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors text-sm">
+                                    Open Full Tool
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 md:p-8">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                <div class="lg:col-span-2">
+                                    <div class="mb-6">
+                                        <label for="seoTextInput" class="block text-gray-700 font-medium mb-2">Enter your content to analyze:</label>
+                                        <textarea id="seoTextInput" rows="12" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Paste your article or content here...">SEO Tools: A Complete Guide for 2023
+
+Search engine optimization (SEO) is crucial for online visibility. With the right SEO tools, you can analyze your website, research keywords, track rankings, and optimize content.
+
+Why Use SEO Tools?
+SEO tools help you understand what's working and what needs improvement. They provide data-driven insights to make informed decisions about your SEO strategy.
+
+Key Features of Good SEO Tools:
+- Keyword research capabilities
+- Site audit functionality
+- Backlink analysis
+- Competitor research
+- Content optimization suggestions
+- Rank tracking
+
+Choosing the right SEO tools can save you time and help you achieve better results. Free tools like Ernie SEO Tools provide essential functionality without the high cost.</textarea>
+                                    </div>
+                                    
+                                    <div class="mb-6">
+                                        <label for="focusKeyword" class="block text-gray-700 font-medium mb-2">Focus Keyword:</label>
+                                        <input type="text" id="focusKeyword" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Enter your target keyword..." value="SEO tools">
+                                    </div>
+                                    
+                                    <button id="analyzeBtn" class="px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all">
+                                        Analyze Content for SEO
+                                    </button>
+                                </div>
+                                
+                                <div>
+                                    <div class="result-card p-6">
+                                        <h4 class="text-lg font-bold text-gray-900 mb-6">SEO Analysis Results</h4>
+                                        
+                                        <div class="flex justify-center mb-8">
+                                            <div class="seo-score relative">
+                                                <span id="seoScore">75</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="space-y-6">
+                                            <div>
+                                                <div class="flex justify-between mb-2">
+                                                    <span class="font-medium text-gray-700">Keyword Density</span>
+                                                    <span class="font-semibold" id="keywordDensity">1.2%</span>
+                                                </div>
+                                                <div class="progress-bar">
+                                                    <div id="densityBar" class="progress-fill" style="width: 40%"></div>
+                                                </div>
+                                                <p class="text-xs text-gray-500 mt-1">Optimal: 1-2%</p>
+                                            </div>
+                                            
+                                            <div>
+                                                <div class="flex justify-between mb-2">
+                                                    <span class="font-medium text-gray-700">Readability</span>
+                                                    <span class="font-semibold" id="readabilityScore">Good</span>
+                                                </div>
+                                                <div class="progress-bar">
+                                                    <div id="readabilityBar" class="progress-fill" style="width: 70%"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div>
+                                                <div class="flex justify-between mb-2">
+                                                    <span class="font-medium text-gray-700">Content Length</span>
+                                                    <span class="font-semibold" id="contentLength">180 words</span>
+                                                </div>
+                                                <div class="progress-bar">
+                                                    <div id="lengthBar" class="progress-fill" style="width: 20%"></div>
+                                                </div>
+                                                <p class="text-xs text-gray-500 mt-1">Aim for 1000+ words</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-8">
+                                            <h5 class="font-bold text-gray-900 mb-4">Recommendations:</h5>
+                                            <ul class="space-y-3">
+                                                <li class="flex items-start">
+                                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <span class="text-gray-700">Keyword usage is good</span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <svg class="h-5 w-5 text-yellow-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <span class="text-gray-700">Increase content length for better ranking</span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <span class="text-gray-700">Readability score is excellent</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Section (Middle) -->
+        <section class="py-4">
+            <div class="container mx-auto px-4">
+                <div class="ad-container">
+                    Google AdSense Ad Space (728x90)
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">SEO Tool Categories</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Browse our 100% free SEO tools by category. Everything you need for digital marketing success.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Content SEO Tools -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-blue-50 text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Content SEO Tools</h3>
+                            <p class="text-gray-600 mb-4">Word counter, readability checker, plagiarism checker, article rewriter, and more.</p>
+                            <div class="text-sm text-gray-500 mb-4">15 tools available</div>
+                            <a href="content-seo-tools.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Browse Tools
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- On-Page SEO Tools -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-green-50 text-green-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">On-Page SEO Tools</h3>
+                            <p class="text-gray-600 mb-4">Meta tag checker, heading analyzer, internal link checker, and more.</p>
+                            <div class="text-sm text-gray-500 mb-4">12 tools available</div>
+                            <a href="onpage-seo-tools.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Browse Tools
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Keyword Tools -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-purple-50 text-purple-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Keyword Tools</h3>
+                            <p class="text-gray-600 mb-4">Keyword research, difficulty checker, SERP preview, search volume, and more.</p>
+                            <div class="text-sm text-gray-500 mb-4">10 tools available</div>
+                            <a href="keyword-tools.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Browse Tools
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Backlink Tools -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-red-50 text-red-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Backlink Tools</h3>
+                            <p class="text-gray-600 mb-4">Backlink checker, domain authority, spam score, anchor text analyzer, and more.</p>
+                            <div class="text-sm text-gray-500 mb-4">8 tools available</div>
+                            <a href="backlink-tools.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Browse Tools
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Technical SEO Tools -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-yellow-50 text-yellow-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Technical SEO Tools</h3>
+                            <p class="text-gray-600 mb-4">XML sitemap generator, robots.txt, website crawler, SSL checker, and more.</p>
+                            <div class="text-sm text-gray-500 mb-4">10 tools available</div>
+                            <a href="technical-seo-tools.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Browse Tools
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Domain & Website Tools -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-indigo-50 text-indigo-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Domain & Website Tools</h3>
+                            <p class="text-gray-600 mb-4">Domain age checker, WHOIS lookup, DNS checker, hosting checker, and more.</p>
+                            <div class="text-sm text-gray-500 mb-4">10 tools available</div>
+                            <a href="domain-tools.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Browse Tools
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- YouTube SEO Tools -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-pink-50 text-pink-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">YouTube SEO Tools</h3>
+                            <p class="text-gray-600 mb-4">Tag generator, keyword tool, rank tracker, channel analyzer, and more.</p>
+                            <div class="text-sm text-gray-500 mb-4">10 tools available</div>
+                            <a href="youtube-seo-tools.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Browse Tools
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- AI SEO Tools -->
+                    <div class="tool-card">
+                        <div class="p-6">
+                            <div class="category-icon bg-teal-50 text-teal-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">AI SEO Tools</h3>
+                            <p class="text-gray-600 mb-4">AI blog writer, SEO optimizer, meta title generator, content outline, and more.</p>
+                            <div class="text-sm text-gray-500 mb-4">10 tools available</div>
+                            <a href="ai-seo-tools.html" class="text-primary-600 font-semibold inline-flex items-center hover:text-primary-800">
+                                Browse Tools
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="about" class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Ernie SEO Tools?</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">We're committed to providing 100% free SEO tools with no hidden costs or limitations.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 text-primary-600 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">100% Free Forever</h3>
+                        <p class="text-gray-600">No paywalls, no trial limits, no hidden costs. All our tools are completely free to use.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Lightning Fast</h3>
+                        <p class="text-gray-600">Optimized for speed with minimal loading times. Get results in seconds, not minutes.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 text-purple-600 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">No Login Required</h3>
+                        <p class="text-gray-600">Use all tools immediately without creating an account or providing any personal information.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-yellow-100 text-yellow-600 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Accurate Results</h3>
+                        <p class="text-gray-600">Powered by reliable algorithms and data sources to provide accurate, actionable insights.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-16 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-8 md:p-12 text-white">
+                    <div class="max-w-3xl mx-auto text-center">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6">How We Keep It Free</h3>
+                        <p class="mb-8 opacity-90">Ernie SEO Tools is supported by non-intrusive ads and affiliate partnerships. We never sell your data or require payment for our tools. Our mission is to make professional SEO tools accessible to everyone, regardless of budget.</p>
+                        <a href="all-tools.html" class="inline-block px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors">
+                            Start Using Free Tools Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white pt-12 pb-8">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                    <div class="lg:col-span-2">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
+                                <span class="text-white font-bold text-xl">E</span>
+                            </div>
+                            <div>
+                                <h2 class="text-2xl font-bold">Ernie SEO Tools</h2>
+                                <p class="text-gray-400 text-sm">100% Free Forever</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 mb-6 max-w-md">Providing 100% free SEO, digital marketing, YouTube SEO, and AI-powered tools for website owners, bloggers, and YouTubers. No login required, no paywalls, no credit limits.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-6">Quick Links</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                            <li><a href="all-tools.html" class="text-gray-400 hover:text-white transition-colors">All Tools</a></li>
+                            <li><a href="#categories" class="text-gray-400 hover:text-white transition-colors">Categories</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">Why Free?</a></li>
+                            <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-6">Legal</h3>
+                        <ul class="space-y-3">
+                            <li><a href="privacy-policy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                            <li><a href="cookie-policy.html" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+                            <li><a href="disclaimer.html" class="text-gray-400 hover:text-white transition-colors">Disclaimer</a></li>
+                            <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-6">Popular Tools</h3>
+                        <ul class="space-y-3">
+                            <li><a href="word-counter.html" class="text-gray-400 hover:text-white transition-colors">Word Counter</a></li>
+                            <li><a href="seo-analyzer.html" class="text-gray-400 hover:text-white transition-colors">SEO Analyzer</a></li>
+                            <li><a href="keyword-research.html" class="text-gray-400 hover:text-white transition-colors">Keyword Research</a></li>
+                            <li><a href="backlink-checker.html" class="text-gray-400 hover:text-white transition-colors">Backlink Checker</a></li>
+                            <li><a href="plagiarism-checker.html" class="text-gray-400 hover:text-white transition-colors">Plagiarism Checker</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 pt-8 text-center">
+                    <p class="text-gray-400">&copy; <span id="currentYear"></span> Ernie SEO Tools. All rights reserved. All tools are 100% free with no login required.</p>
+                    <p class="text-gray-500 text-sm mt-2">This website is not affiliated with Google LLC. "Google" is a registered trademark of Google LLC.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- JavaScript for Tool Functionality -->
+    <script>
+        // ...existing code...
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Word Counter Tool Functionality
+        const textInput = document.getElementById('textInput');
+        const countBtn = document.getElementById('countBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const sampleBtn = document.getElementById('sampleBtn');
+        
+        const wordCountEl = document.getElementById('wordCount');
+        const charCountEl = document.getElementById('charCount');
+        const sentenceCountEl = document.getElementById('sentenceCount');
+        const paragraphCountEl = document.getElementById('paragraphCount');
+        const readingTimeEl = document.getElementById('readingTime');
+        const speakingTimeEl = document.getElementById('speakingTime');
+        const readingTimeBar = document.getElementById('readingTimeBar');
+        const speakingTimeBar = document.getElementById('speakingTimeBar');
+        
+        function countText() {
+            const text = textInput.value.trim();
+            
+            // Word count (split by whitespace and filter out empty strings)
+            const words = text.split(/\s+/).filter(word => word.length > 0);
+            const wordCount = words.length;
+            
+            // Character count (including spaces)
+            const charCount = text.length;
+            
+            // Sentence count (split by . ! ?)
+            const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
+            const sentenceCount = sentences.length;
+            
+            // Paragraph count (split by double newline)
+            const paragraphs = text.split(/\n\s*\n/).filter(para => para.trim().length > 0);
+            const paragraphCount = paragraphs.length || 1;
+            
+            // Reading time (average 200 words per minute)
+            const readingTimeMinutes = wordCount / 200;
+            const readingTimeDisplay = readingTimeMinutes < 1 ? 
+                '< 1 min' : 
+                `${Math.ceil(readingTimeMinutes)} min`;
+            
+            // Speaking time (average 130 words per minute)
+            const speakingTimeMinutes = wordCount / 130;
+            const speakingTimeDisplay = speakingTimeMinutes < 1 ? 
+                '< 1 min' : 
+                `${Math.ceil(speakingTimeMinutes)} min`;
+            
+            // Update UI
+            wordCountEl.textContent = wordCount;
+            charCountEl.textContent = charCount;
+            sentenceCountEl.textContent = sentenceCount;
+            paragraphCountEl.textContent = paragraphCount;
+            readingTimeEl.textContent = readingTimeDisplay;
+            speakingTimeEl.textContent = speakingTimeDisplay;
+            
+            // Update progress bars (normalize to max 5 mins for visualization)
+            const readingTimePercentage = Math.min(readingTimeMinutes / 5 * 100, 100);
+            const speakingTimePercentage = Math.min(speakingTimeMinutes / 5 * 100, 100);
+            
+            readingTimeBar.style.width = `${readingTimePercentage}%`;
+            speakingTimeBar.style.width = `${speakingTimePercentage}%`;
+        }
+        
+        function clearText() {
+            textInput.value = '';
+            countText();
+        }
+        
+        function loadSampleText() {
+            textInput.value = `Welcome to Ernie SEO Tools! We provide 100% free SEO tools for website owners, bloggers, and YouTubers.
+
+Our tools are completely free, with no login required, no paywalls, and no credit limits. Whether you need to analyze your content, research keywords, check backlinks, or optimize your YouTube videos, we have the free tools you need.
+
+Start using our tools today to improve your SEO and grow your online presence!
+
+Why choose Ernie SEO Tools?
+• 100% free forever
+• No login required
+• Fast and accurate results
+• Beginner-friendly interface
+• Mobile-optimized design
+• Regular tool updates
+
+Get started now with our most popular tools: Word Counter, SEO Content Analyzer, Keyword Research Tool, and Backlink Checker.`;
+            countText();
+        }
+        
+        // Initialize word counter on page load
+        document.addEventListener('DOMContentLoaded', countText);
+        
+        // Add event listeners
+        countBtn.addEventListener('click', countText);
+        clearBtn.addEventListener('click', clearText);
+        sampleBtn.addEventListener('click', loadSampleText);
+        textInput.addEventListener('input', countText);
+        
+        // SEO Analyzer Tool Functionality
+        const seoTextInput = document.getElementById('seoTextInput');
+        const focusKeyword = document.getElementById('focusKeyword');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        
+        const seoScoreEl = document.getElementById('seoScore');
+        const keywordDensityEl = document.getElementById('keywordDensity');
+        const readabilityScoreEl = document.getElementById('readabilityScore');
+        const contentLengthEl = document.getElementById('contentLength');
+        
+        const densityBar = document.getElementById('densityBar');
+        const readabilityBar = document.getElementById('readabilityBar');
+        const lengthBar = document.getElementById('lengthBar');
+        
+        function analyzeSEO() {
+            const text = seoTextInput.value.trim();
+            const keyword = focusKeyword.value.trim().toLowerCase();
+            
+            // Word count
+            const words = text.split(/\s+/).filter(word => word.length > 0);
+            const wordCount = words.length;
+            
+            // Keyword density
+            let keywordOccurrences = 0;
+            if (keyword) {
+                const keywordRegex = new RegExp(`\\b${keyword}\\b`, 'gi');
+                const matches = text.match(keywordRegex);
+                keywordOccurrences = matches ? matches.length : 0;
+            }
+            
+            const density = keyword ? ((keywordOccurrences / wordCount) * 100).toFixed(1) : 0;
+            const densityPercentage = Math.min(density, 3); // Cap at 3% for visualization
+            
+            // Readability score (simplified)
+            const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
+            const wordsPerSentence = wordCount / (sentences.length || 1);
+            
+            let readabilityScore = 'Good';
+            let readabilityPercentage = 70;
+            
+            if (wordsPerSentence < 15) {
+                readabilityScore = 'Excellent';
+                readabilityPercentage = 90;
+            } else if (wordsPerSentence < 25) {
+                readabilityScore = 'Good';
+                readabilityPercentage = 70;
+            } else {
+                readabilityScore = 'Fair';
+                readabilityPercentage = 40;
+            }
+            
+            // Content length score
+            let lengthPercentage = Math.min((wordCount / 2000) * 100, 100);
+            let lengthStatus = `${wordCount} words`;
+            
+            // Overall SEO score (simplified algorithm)
+            let seoScore = 75; // Base score
+            
+            // Adjust based on keyword density
+            if (density >= 0.5 && density <= 2.5) {
+                seoScore += 10;
+            } else if (density > 2.5) {
+                seoScore -= 5;
+            } else if (density > 0 && density < 0.5) {
+                seoScore += 5;
+            }
+            
+            // Adjust based on content length
+            if (wordCount >= 1000) {
+                seoScore += 10;
+            } else if (wordCount >= 500) {
+                seoScore += 5;
+            } else {
+                seoScore -= 5;
+            }
+            
+            // Adjust based on readability
+            if (readabilityScore === 'Excellent') {
+                seoScore += 10;
+            } else if (readabilityScore === 'Good') {
+                seoScore += 5;
+            }
+            
+            // Cap score at 100
+            seoScore = Math.min(seoScore, 100);
+            
+            // Update UI
+            seoScoreEl.textContent = seoScore;
+            keywordDensityEl.textContent = keyword ? `${density}%` : 'N/A';
+            readabilityScoreEl.textContent = readabilityScore;
+            contentLengthEl.textContent = lengthStatus;
+            
+            // Update progress bars
+            densityBar.style.width = `${(densityPercentage / 3) * 100}%`;
+            readabilityBar.style.width = `${readabilityPercentage}%`;
+            lengthBar.style.width = `${lengthPercentage}%`;
+            
+            // Update SEO score circle (simplified - in production would rotate based on score)
+            const seoScoreCircle = document.querySelector('.seo-score');
+            const scorePercentage = seoScore;
+            seoScoreCircle.style.background = `conic-gradient(var(--primary-color) 0% ${scorePercentage}%, #e5e7eb ${scorePercentage}% 100%)`;
+        }
+        
+        analyzeBtn.addEventListener('click', analyzeSEO);
+        
+        // Initialize SEO analyzer on page load
+        document.addEventListener('DOMContentLoaded', analyzeSEO);
+        seoTextInput.addEventListener('input', analyzeSEO);
+        focusKeyword.addEventListener('input', analyzeSEO);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Ad placeholder functionality (simulating ad load)
+        const adContainers = document.querySelectorAll('.ad-container');
+        adContainers.forEach(container => {
+            setTimeout(() => {
+                container.innerHTML = '<div class="text-center"><div class="inline-block px-4 py-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg text-sm">Ad Space</div><p class="text-xs text-gray-500 mt-2">Google AdSense compatible ad slot</p></div>';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
