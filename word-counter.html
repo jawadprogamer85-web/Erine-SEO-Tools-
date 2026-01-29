@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Word Counter Tool | Ernie SEO Tools</title>
+    <meta name="description" content="100% free word counter tool. Count words, characters, sentences, paragraphs, and calculate reading time instantly. No login required.">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta property="og:title" content="Free Word Counter Tool | Ernie SEO Tools">
+    <meta property="og:description" content="Count words, characters, sentences, paragraphs, and reading time instantly. 100% free, no login required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ernieseotools.com/word-counter.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            300: '#f0abfc',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            800: '#86198f',
+                            900: '#701a75',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.3s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(10px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #fdf4ff 100%);
+        }
+        
+        .tool-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            border-left: 4px solid #0ea5e9;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            border-color: #0ea5e9;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #d946ef);
+            transition: width 0.5s ease;
+        }
+        
+        .textarea-resize {
+            resize: vertical;
+        }
+        
+        .highlight {
+            background-color: rgba(14, 165, 233, 0.1);
+            border-radius: 4px;
+            padding: 2px 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 0.5s ease;
+        }
+        
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .seo-score {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 24px;
+            position: relative;
+        }
+        
+        .seo-score::before {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: white;
+        }
+        
+        .seo-score span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .ad-container {
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">E</span>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">Ernie SEO Tools</h1>
+                            <p class="text-xs text-gray-500 -mt-1">100% Free Forever</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link font-medium text-gray-700 hover:text-primary-600">Home</a>
+                    <a href="all-tools.html" class="nav-link font-medium text-gray-700 hover:text-primary-600">All Tools</a>
+                    <a href="word-counter.html" class="nav-link font-medium text-primary-600">Word Counter</a>
+                    <a href="seo-analyzer.html" class="nav-link font-medium text-gray-700 hover:text-primary-600">SEO Analyzer</a>
+                    <a href="keyword-research.html" class="nav-link font-medium text-gray-700 hover:text-primary-600">Keyword Research</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button id="mobileMenuButton" class="md:hidden text-gray-700 hover:text-primary-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="md:hidden hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="font-medium text-gray-700 hover:text-primary-600 py-2">Home</a>
+                    <a href="all-tools.html" class="font-medium text-gray-700 hover:text-primary-600 py-2">All Tools</a>
+                    <a href="word-counter.html" class="font-medium text-primary-600 py-2">Word Counter</a>
+                    <a href="seo-analyzer.html" class="font-medium text-gray-700 hover:text-primary-600 py-2">SEO Analyzer</a>
+                    <a href="keyword-research.html" class="font-medium text-gray-700 hover:text-primary-600 py-2">Keyword Research</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="py-8 md:py-12">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-8">
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                            Free <span class="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">Word Counter Tool</span>
+                        </h1>
+                        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                            Count words, characters, sentences, paragraphs, and calculate reading time instantly. 100% free with no login required.
+                        </p>
+                    </div>
+                    
+                    <!-- Tool Container -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <!-- Tool Header -->
+                        <div class="p-6 border-b border-gray-100">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Word Counter</h2>
+                                    <p class="text-gray-600">Real-time text analysis with detailed statistics</p>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="tooltip">
+                                        <button id="clearBtn" class="px-4 py-2 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors text-sm">
+                                            Clear Text
+                                        </button>
+                                        <span class="tooltip-text">Remove all text from the input field</span>
+                                    </div>
+                                    <div class="tooltip">
+                                        <button id="sampleBtn" class="px-4 py-2 bg-primary-100 text-primary-700 font-semibold rounded-lg hover:bg-primary-200 transition-colors text-sm">
+                                            Load Sample
+                                        </button>
+                                        <span class="tooltip-text">Load example text for testing</span>
+                                    </div>
+                                    <div class="tooltip">
+                                        <button id="copyBtn" class="px-4 py-2 bg-secondary-100 text-secondary-700 font-semibold rounded-lg hover:bg-secondary-200 transition-colors text-sm">
+                                            Copy Results
+                                        </button>
+                                        <span class="tooltip-text">Copy analysis results to clipboard</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tool Body -->
+                        <div class="p-6 md:p-8">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                <!-- Input Section -->
+                                <div class="lg:col-span-2">
+                                    <div class="mb-6">
+                                        <label for="textInput" class="block text-gray-700 font-medium mb-2">
+                                            Enter your text:
+                                            <span class="text-gray-500 font-normal text-sm">(Type or paste your text below)</span>
+                                        </label>
+                                        <textarea 
+                                            id="textInput" 
+                                            rows="16" 
+                                            class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent textarea-resize"
+                                            placeholder="Start typing or paste your text here to analyze it..."
+                                        >Welcome to Ernie SEO Tools! We provide 100% free SEO tools for website owners, bloggers, and YouTubers. Our tools are completely free, with no login required, no paywalls, and no credit limits.
+
+Whether you need to analyze your content, research keywords, check backlinks, or optimize your YouTube videos, we have the free tools you need.
+
+Start using our tools today to improve your SEO and grow your online presence!
+
+Why choose Ernie SEO Tools?
+• 100% free forever
+• No login required
+• Fast and accurate results
+• Beginner-friendly interface
+• Mobile-optimized design
+• Regular tool updates
+
+Get started now with our most popular tools: Word Counter, SEO Content Analyzer, Keyword Research Tool, and Backlink Checker.</textarea>
+                                        <div class="flex justify-between items-center mt-2">
+                                            <p class="text-sm text-gray-500">
+                                                <span id="charCount">0</span> characters • 
+                                                <span id="wordCount">0</span> words
+                                            </p>
+                                            <button id="countBtn" class="px-6 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity">
+                                                Analyze Text
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Advanced Options -->
+                                    <div class="bg-gray-50 rounded-xl p-4 mb-6">
+                                        <h4 class="font-semibold text-gray-900 mb-3">Advanced Options</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="flex items-center space-x-2">
+                                                    <input type="checkbox" id="autoCount" checked class="rounded text-primary-600">
+                                                    <span class="text-gray-700">Auto-count as you type</span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <label class="flex items-center space-x-2">
+                                                    <input type="checkbox" id="includeSpaces" checked class="rounded text-primary-600">
+                                                    <span class="text-gray-700">Include spaces in character count</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- SEO Tips -->
+                                    <div class="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-xl p-4 border border-primary-100">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="text-primary-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-semibold text-gray-900 mb-1">💡 SEO Tip</h5>
+                                                <p class="text-gray-600 text-sm">
+                                                    For optimal SEO, aim for blog posts with at least 1,000 words. Longer, comprehensive content tends to rank better in search engines and provides more value to readers.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Results Section -->
+                                <div>
+                                    <div class="sticky top-24">
+                                        <div class="result-card p-6 mb-6">
+                                            <h3 class="text-xl font-bold text-gray-900 mb-6">Text Analysis Results</h3>
+                                            
+                                            <!-- Main Stats Grid -->
+                                            <div class="grid grid-cols-2 gap-4 mb-8">
+                                                <div class="stat-card p-4 text-center">
+                                                    <div class="text-3xl font-bold text-primary-600" id="resultWordCount">0</div>
+                                                    <div class="text-gray-600 text-sm">Words</div>
+                                                </div>
+                                                <div class="stat-card p-4 text-center">
+                                                    <div class="text-3xl font-bold text-primary-600" id="resultCharCount">0</div>
+                                                    <div class="text-gray-600 text-sm">Characters</div>
+                                                </div>
+                                                <div class="stat-card p-4 text-center">
+                                                    <div class="text-3xl font-bold text-primary-600" id="resultSentenceCount">0</div>
+                                                    <div class="text-gray-600 text-sm">Sentences</div>
+                                                </div>
+                                                <div class="stat-card p-4 text-center">
+                                                    <div class="text-3xl font-bold text-primary-600" id="resultParagraphCount">0</div>
+                                                    <div class="text-gray-600 text-sm">Paragraphs</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Time Analysis -->
+                                            <div class="space-y-6">
+                                                <div>
+                                                    <div class="flex justify-between items-center mb-2">
+                                                        <div class="flex items-center space-x-2">
+                                                            <span class="font-medium text-gray-700">Reading Time</span>
+                                                            <div class="tooltip">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                </svg>
+                                                                <span class="tooltip-text">Based on average reading speed of 200 words per minute</span>
+                                                            </div>
+                                                        </div>
+                                                        <span class="font-semibold text-primary-600" id="readingTime">0 min</span>
+                                                    </div>
+                                                    <div class="progress-bar">
+                                                        <div id="readingTimeBar" class="progress-fill" style="width: 0%"></div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div>
+                                                    <div class="flex justify-between items-center mb-2">
+                                                        <div class="flex items-center space-x-2">
+                                                            <span class="font-medium text-gray-700">Speaking Time</span>
+                                                            <div class="tooltip">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                </svg>
+                                                                <span class="tooltip-text">Based on average speaking speed of 130 words per minute</span>
+                                                            </div>
+                                                        </div>
+                                                        <span class="font-semibold text-primary-600" id="speakingTime">0 min</span>
+                                                    </div>
+                                                    <div class="progress-bar">
+                                                        <div id="speakingTimeBar" class="progress-fill" style="width: 0%"></div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div>
+                                                    <div class="flex justify-between items-center mb-2">
+                                                        <div class="flex items-center space-x-2">
+                                                            <span class="font-medium text-gray-700">SEO Score</span>
+                                                            <div class="tooltip">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                </svg>
+                                                                <span class="tooltip-text">Based on content length, structure, and readability</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="seo-score" id="seoScoreCircle">
+                                                            <span id="seoScore">75</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <h5 class="font-medium text-gray-700 mb-2">Content Assessment:</h5>
+                                                        <ul class="space-y-2">
+                                                            <li id="lengthAssessment" class="text-sm text-gray-600">✓ Good content length</li>
+                                                            <li id="structureAssessment" class="text-sm text-gray-600">✓ Proper paragraph structure</li>
+                                                            <li id="readabilityAssessment" class="text-sm text-gray-600">✓ Good readability</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Additional Stats -->
+                                        <div class="bg-white rounded-xl p-6 border border-gray-200">
+                                            <h4 class="font-semibold text-gray-900 mb-4">Additional Statistics</h4>
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                                    <div class="text-xl font-bold text-gray-800" id="charNoSpaces">0</div>
+                                                    <div class="text-gray-600 text-xs">Chars (no spaces)</div>
+                                                </div>
+                                                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                                    <div class="text-xl font-bold text-gray-800" id="avgWordLength">0.0</div>
+                                                    <div class="text-gray-600 text-xs">Avg. word length</div>
+                                                </div>
+                                                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                                    <div class="text-xl font-bold text-gray-800" id="avgSentenceLength">0</div>
+                                                    <div class="text-gray-600 text-xs">Words per sentence</div>
+                                                </div>
+                                                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                                    <div class="text-xl font-bold text-gray-800" id="avgParagraphLength">0</div>
+                                                    <div class="text-gray-600 text-xs">Sentences per para</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Ad Section -->
+        <section class="py-6">
+            <div class="container mx-auto px-4">
+                <div class="ad-container">
+                    Google AdSense Ad Space (728x90)
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">E</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold">Ernie SEO Tools</h2>
+                            <p class="text-gray-400 text-sm">100% Free Forever</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Providing 100% free SEO, digital marketing, YouTube SEO, and AI-powered tools for website owners, bloggers, and YouTubers. No login required, no paywalls, no credit limits.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="all-tools.html" class="text-gray-400 hover:text-white transition-colors">All Tools</a></li>
+                        <li><a href="word-counter.html" class="text-gray-400 hover:text-white transition-colors">Word Counter</a></li>
+                        <li><a href="seo-analyzer.html" class="text-gray-400 hover:text-white transition-colors">SEO Analyzer</a></li>
+                        <li><a href="keyword-research.html" class="text-gray-400 hover:text-white transition-colors">Keyword Research</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Legal</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Disclaimer</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Popular Tools</h3>
+                    <ul class="space-y-3">
+                        <li><a href="word-counter.html" class="text-gray-400 hover:text-white transition-colors">Word Counter</a></li>
+                        <li><a href="seo-analyzer.html" class="text-gray-400 hover:text-white transition-colors">SEO Analyzer</a></li>
+                        <li><a href="keyword-research.html" class="text-gray-400 hover:text-white transition-colors">Keyword Research</a></li>
+                        <li><a href="backlink-checker.html" class="text-gray-400 hover:text-white transition-colors">Backlink Checker</a></li>
+                        <li><a href="plagiarism-checker.html" class="text-gray-400 hover:text-white transition-colors">Plagiarism Checker</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">&copy; <span id="currentYear"></span> Ernie SEO Tools. All rights reserved. All tools are 100% free with no login required.</p>
+                <p class="text-gray-500 text-sm mt-2">This website is not affiliated with Google LLC. "Google" is a registered trademark of Google LLC.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // DOM Elements
+        const textInput = document.getElementById('textInput');
+        const countBtn = document.getElementById('countBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const sampleBtn = document.getElementById('sampleBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const autoCountCheck = document.getElementById('autoCount');
+        const includeSpacesCheck = document.getElementById('includeSpaces');
+
+        // Display Elements
+        const charCountEl = document.getElementById('charCount');
+        const wordCountEl = document.getElementById('wordCount');
+        const resultWordCountEl = document.getElementById('resultWordCount');
+        const resultCharCountEl = document.getElementById('resultCharCount');
+        const resultSentenceCountEl = document.getElementById('resultSentenceCount');
+        const resultParagraphCountEl = document.getElementById('resultParagraphCount');
+        const charNoSpacesEl = document.getElementById('charNoSpaces');
+        const avgWordLengthEl = document.getElementById('avgWordLength');
+        const avgSentenceLengthEl = document.getElementById('avgSentenceLength');
+        const avgParagraphLengthEl = document.getElementById('avgParagraphLength');
+        const readingTimeEl = document.getElementById('readingTime');
+        const speakingTimeEl = document.getElementById('speakingTime');
+        const readingTimeBar = document.getElementById('readingTimeBar');
+        const speakingTimeBar = document.getElementById('speakingTimeBar');
+        const seoScoreEl = document.getElementById('seoScore');
+        const seoScoreCircle = document.getElementById('seoScoreCircle');
+        const lengthAssessmentEl = document.getElementById('lengthAssessment');
+        const structureAssessmentEl = document.getElementById('structureAssessment');
+        const readabilityAssessmentEl = document.getElementById('readabilityAssessment');
+
+        // Sample Text
+        const sampleText = `Welcome to Ernie SEO Tools! We provide 100% free SEO tools for website owners, bloggers, and YouTubers.
+
+Why choose our tools?
+1. 100% Free Forever
+2. No Login Required
+3. Fast & Accurate Results
+4. Mobile-Friendly Design
+5. Regular Updates
+
+Our most popular tools include:
+• Word Counter - Count words, characters, sentences, paragraphs
+• SEO Content Analyzer - Analyze content for SEO optimization
+• Keyword Research - Find keyword ideas and search volume
+• Backlink Checker - Check backlinks for any website
+• Plagiarism Checker - Ensure content originality
+
+Start optimizing your content today with our free tools!`;
+
+        // Function to count text statistics
+        function countText() {
+            const text = textInput.value;
+            const includeSpaces = includeSpacesCheck.checked;
+            
+            // Word count
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            const wordCount = words.length;
+            
+            // Character count
+            const charCount = includeSpaces ? text.length : text.replace(/\s+/g, '').length;
+            const charNoSpaces = text.replace(/\s+/g, '').length;
+            
+            // Sentence count
+            const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
+            const sentenceCount = sentences.length;
+            
+            // Paragraph count
+            const paragraphs = text.split(/\n\s*\n/).filter(paragraph => paragraph.trim().length > 0);
+            const paragraphCount = paragraphs.length || (text.trim().length > 0 ? 1 : 0);
+            
+            // Average calculations
+            const avgWordLength = wordCount > 0 ? (charNoSpaces / wordCount).toFixed(1) : '0.0';
+            const avgSentenceLength = sentenceCount > 0 ? (wordCount / sentenceCount).toFixed(0) : '0';
+            const avgParagraphLength = paragraphCount > 0 ? (sentenceCount / paragraphCount).toFixed(1) : '0.0';
+            
+            // Reading and speaking time
+            const readingTimeMinutes = wordCount / 200; // 200 words per minute
+            const speakingTimeMinutes = wordCount / 130; // 130 words per minute
+            
+            const readingTimeDisplay = readingTimeMinutes < 1 ? 
+                '< 1 min' : 
+                readingTimeMinutes < 2 ? 
+                '1 min' : 
+                `${Math.ceil(readingTimeMinutes)} mins`;
+                
+            const speakingTimeDisplay = speakingTimeMinutes < 1 ? 
+                '< 1 min' : 
+                speakingTimeMinutes < 2 ? 
+                '1 min' : 
+                `${Math.ceil(speakingTimeMinutes)} mins`;
+            
+            // Progress bars (normalized to max 5 minutes for visualization)
+            const readingTimePercentage = Math.min((readingTimeMinutes / 5) * 100, 100);
+            const speakingTimePercentage = Math.min((speakingTimeMinutes / 5) * 100, 100);
+            
+            // Calculate SEO Score (0-100)
+            let seoScore = 75; // Base score
+            
+            // Adjust based on content length
+            if (wordCount >= 1000) {
+                seoScore += 15;
+                lengthAssessmentEl.innerHTML = '✓ Excellent content length';
+                lengthAssessmentEl.className = 'text-sm text-green-600';
+            } else if (wordCount >= 500) {
+                seoScore += 10;
+                lengthAssessmentEl.innerHTML = '✓ Good content length';
+                lengthAssessmentEl.className = 'text-sm text-green-600';
+            } else if (wordCount >= 200) {
+                seoScore += 5;
+                lengthAssessmentEl.innerHTML = '✓ Moderate content length';
+                lengthAssessmentEl.className = 'text-sm text-yellow-600';
+            } else {
+                seoScore -= 10;
+                lengthAssessmentEl.innerHTML = '⚠ Consider adding more content';
+                lengthAssessmentEl.className = 'text-sm text-orange-500';
+            }
+            
+            // Adjust based on paragraph structure
+            if (paragraphCount >= 3) {
+                seoScore += 10;
+                structureAssessmentEl.innerHTML = '✓ Good paragraph structure';
+                structureAssessmentEl.className = 'text-sm text-green-600';
+            } else if (paragraphCount >= 1) {
+                seoScore += 5;
+                structureAssessmentEl.innerHTML = '✓ Basic paragraph structure';
+                structureAssessmentEl.className = 'text-sm text-yellow-600';
+            } else {
+                seoScore -= 5;
+                structureAssessmentEl.innerHTML = '⚠ Add paragraph structure';
+                structureAssessmentEl.className = 'text-sm text-orange-500';
+            }
+            
+            // Adjust based on sentence length (readability)
+            const avgWordsPerSentence = parseFloat(avgSentenceLength);
+            if (avgWordsPerSentence > 5 && avgWordsPerSentence < 25) {
+                seoScore += 10;
+                readabilityAssessmentEl.innerHTML = '✓ Good readability';
+                readabilityAssessmentEl.className = 'text-sm text-green-600';
+            } else if (avgWordsPerSentence >= 25) {
+                seoScore -= 5;
+                readabilityAssessmentEl.innerHTML = '⚠ Sentences might be too long';
+                readabilityAssessmentEl.className = 'text-sm text-orange-500';
+            } else {
+                seoScore += 5;
+                readabilityAssessmentEl.innerHTML = '✓ Sentences are short and clear';
+                readabilityAssessmentEl.className = 'text-sm text-green-600';
+            }
+            
+            // Cap score at 100
+            seoScore = Math.min(Math.max(seoScore, 0), 100);
+            
+            // Update UI
+            charCountEl.textContent = charCount;
+            wordCountEl.textContent = wordCount;
+            resultWordCountEl.textContent = wordCount;
+            resultCharCountEl.textContent = charCount;
+            resultSentenceCountEl.textContent = sentenceCount;
+            resultParagraphCountEl.textContent = paragraphCount;
+            charNoSpacesEl.textContent = charNoSpaces;
+            avgWordLengthEl.textContent = avgWordLength;
+            avgSentenceLengthEl.textContent = avgSentenceLength;
+            avgParagraphLengthEl.textContent = avgParagraphLength;
+            readingTimeEl.textContent = readingTimeDisplay;
+            speakingTimeEl.textContent = speakingTimeDisplay;
+            seoScoreEl.textContent = Math.round(seoScore);
+            
+            // Update progress bars
+            readingTimeBar.style.width = `${readingTimePercentage}%`;
+            speakingTimeBar.style.width = `${speakingTimePercentage}%`;
+            
+            // Update SEO score circle
+            seoScoreCircle.style.background = `conic-gradient(#0ea5e9 0% ${seoScore}%, #e5e7eb ${seoScore}% 100%)`;
+            
+            // Add pulse animation to stats
+            [resultWordCountEl, resultCharCountEl, resultSentenceCountEl, resultParagraphCountEl].forEach(el => {
+                el.classList.add('pulse');
+                setTimeout(() => el.classList.remove('pulse'), 500);
+            });
+        }
+
+        // Function to clear text
+        function clearText() {
+            textInput.value = '';
+            countText();
+            textInput.focus();
+            
+            // Show notification
+            showNotification('Text cleared successfully!', 'info');
+        }
+
+        // Function to load sample text
+        function loadSampleText() {
+            textInput.value = sampleText;
+            countText();
+            
+            // Show notification
+            showNotification('Sample text loaded!', 'success');
+        }
+
+        // Function to copy results
+        function copyResults() {
+            const text = textInput.value;
+            const wordCount = document.getElementById('resultWordCount').textContent;
+            const charCount = document.getElementById('resultCharCount').textContent;
+            
+            const results = `Word Count Analysis:
+Words: ${wordCount}
+Characters: ${charCount}
+Sentences: ${document.getElementById('resultSentenceCount').textContent}
+Paragraphs: ${document.getElementById('resultParagraphCount').textContent}
+Reading Time: ${document.getElementById('readingTime').textContent}
+Speaking Time: ${document.getElementById('speakingTime').textContent}
+SEO Score: ${document.getElementById('seoScore').textContent}/100
+
+Analyzed using Ernie SEO Tools (https://ernieseotools.com)`;
+            
+            navigator.clipboard.writeText(results)
+                .then(() => {
+                    showNotification('Results copied to clipboard!', 'success');
+                })
+                .catch(() => {
+                    // Fallback for older browsers
+                    const textarea = document.createElement('textarea');
+                    textarea.value = results;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    showNotification('Results copied to clipboard!', 'success');
+                });
+        }
+
+        // Function to show notification
+        function showNotification(message, type) {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = `notification fixed top-4 right-4 z-50 px-4 py-3 rounded-lg shadow-lg animate-slide-up ${
+                type === 'success' ? 'bg-green-100 text-green-800 border border-green-200' :
+                type === 'error' ? 'bg-red-100 text-red-800 border border-red-200' :
+                'bg-blue-100 text-blue-800 border border-blue-200'
+            }`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${
+                            type === 'success' ? 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"' :
+                            type === 'error' ? 'M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"' :
+                            'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                        }" />
+                    </svg>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.opacity = '0';
+                    notification.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.remove();
+                        }
+                    }, 300);
+                }
+            }, 3000);
+        }
+
+        // Initialize
+        function init() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Mobile menu toggle
+            document.getElementById('mobileMenuButton').addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Event listeners
+            countBtn.addEventListener('click', countText);
+            clearBtn.addEventListener('click', clearText);
+            sampleBtn.addEventListener('click', loadSampleText);
+            copyBtn.addEventListener('click', copyResults);
+            
+            // Auto-count when typing
+            textInput.addEventListener('input', function() {
+                if (autoCountCheck.checked) {
+                    countText();
+                }
+            });
+            
+            // Update count when spaces checkbox changes
+            includeSpacesCheck.addEventListener('change', countText);
+            
+            // Initialize with sample text
+            countText();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        const mobileMenu = document.getElementById('mobileMenu');
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // Ad placeholder functionality
+            const adContainer = document.querySelector('.ad-container');
+            if (adContainer) {
+                setTimeout(() => {
+                    adContainer.innerHTML = '<div class="text-center"><div class="inline-block px-4 py-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg text-sm">Ad Space</div><p class="text-xs text-gray-500 mt-2">Google AdSense compatible ad slot</p></div>';
+                }, 1000);
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
